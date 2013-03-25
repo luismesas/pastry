@@ -1,3 +1,8 @@
+################
+# NodeJS modules
+################
+node_modules
+
 lib-cov
 *.seed
 *.log
@@ -12,3 +17,13 @@ logs
 results
 
 npm-debug.log
+
+################
+# Sublime-Text
+################
+*.sublime-*
+
+################
+# MAC CRAP
+################
+DS_Store

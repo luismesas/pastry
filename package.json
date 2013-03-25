@@ -1,0 +1,18 @@
+{
+	"name"			: "pastry",
+	"description"	: "Simple cookie manager based on redis",
+	"homepage"		: "http://github.com/luismesas/pastry",
+	"keywords"		: ["util", "functional", "server", "client", "browser", "cookie"],
+	"author"		: "Luis Mesas <luismesas@gmail.com>",
+	"repository"	: {"type": "git", "url": "git://github.com/luismesas/pastry.git"},
+	"main"			: "index.js",
+	"version"		: "0.9.0",
+
+  	"dependencies"	: {
+		"node-uuid": "1.4.x",
+		"pause": "0.0.1",
+		"mongodb" 	: "1.2.x",
+		"redis"		: "0.8.2",
+		"hero"		: "https://github.com/thegameofcode/hero/tarball/master"
+	}
+}
