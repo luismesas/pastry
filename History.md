@@ -2,6 +2,7 @@
 ==================
 
   * fixed bug storing null session data
+  * improved session parse
 
 0.9.4 / 2013-03-25
 ==================
