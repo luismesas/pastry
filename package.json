@@ -6,7 +6,7 @@
 	"author"		: "Luis Mesas <luismesas@gmail.com>",
 	"repository"	: {"type": "git", "url": "git://github.com/luismesas/pastry.git"},
 	"main"			: "index.js",
-	"version"		: "0.9.7",
+	"version"		: "0.9.8",
 
   	"dependencies"	: {
 		"node-uuid"	: "1.4.x",

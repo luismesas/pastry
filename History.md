@@ -1,3 +1,9 @@
+0.9.8 / 2013-05-13
+==================
+
+  * new: session expired on redis
+  * fix: session store was not storing with correct redid key
+
 0.9.7 / 2013-05-13
 ==================
 
