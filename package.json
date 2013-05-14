@@ -10,8 +10,6 @@
 
   	"dependencies"	: {
 		"pause"		: "0.0.1",
-		"mongodb"	: "1.2.x",
-		"redis"		: "0.8.2",
-		"hero"		: "https://github.com/thegameofcode/hero/archive/0.1.9.tar.gz"
+		"redis"		: "0.8.2"
 	}
 }
