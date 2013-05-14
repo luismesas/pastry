@@ -10,15 +10,36 @@ var config = {
 		cookie : [{
 			name : 'pastry_test_host',
 			domain : '.local.skbk.es',
-			maxAge : 3600
+			maxAge : 3600,
+			key : '123456789',
+			shared : [
+				{
+					host:'http://local.skbk.es:9998',
+					name:'pastry_test_slave1'
+				},
+				{
+					host:'http://local.skbk.es:9997',
+					name:'pastry_test_slave2'
+				}
+			]
 		}]
 	},
-	slave : {
+	slave1 : {
 		port : 9998,
 		cookie : [{
-			name : 'pastry_test_slave',
+			name : 'pastry_test_slave1',
 			domain : '.local.skbk.es',
-			maxAge : 3600
+			maxAge : 3600,
+			key : '123456789'
+		}]
+	},
+	slave2 : {
+		port : 9997,
+		cookie : [{
+			name : 'pastry_test_slave2',
+			domain : '.local.skbk.es',
+			maxAge : 3600,
+			key : '123456789'
 		}]
 	}
 };
@@ -38,23 +59,55 @@ appHost.get('/session', function(req,res){
 	res.send(200, req.pastry);
 });
 
+appHost.get('/login', function(req,res){
+	var session = req.pastry[config.host.cookie[0].name];
+	session.data.uid = 'UID-2';
+	session.spread();
+});
+
 appHost.listen(config.host.port);
 console.log('App host listening on port',config.host.port);
 
-// ---------
-// APP SLAVE
-// ---------
-var appSlave = express();
-appSlave.use(express.static(__dirname + '/www'));
-appSlave.use(express.bodyParser());
-appSlave.use(pastry.parseCookies({
-	cookie: config.slave.cookie
+// -----------
+// APP SLAVE 1
+// -----------
+var appSlave1 = express();
+appSlave1.use(express.static(__dirname + '/www'));
+appSlave1.use(express.bodyParser());
+appSlave1.use(pastry.parseCookies({
+	cookie: config.slave1.cookie
 }));
-appSlave.use(appSlave.router);
+appSlave1.use(appSlave1.router);
 
-appSlave.get('/session', function(req,res){
+appSlave1.get('/session', function(req,res){
 	res.send(200, req.pastry);
 });
 
-appSlave.listen(config.slave.port);
-console.log('App slave listening on port',config.slave.port);
+appSlave1.get('/ps/req/:crypted',function(req,res){
+	req.pastry[config.slave1.cookie[0].name].sharingRequest();
+});
+
+appSlave1.listen(config.slave1.port);
+console.log('App slave listening on port',config.slave1.port);
+
+// -----------
+// APP SLAVE 2
+// -----------
+var appSlave2 = express();
+appSlave2.use(express.static(__dirname + '/www'));
+appSlave2.use(express.bodyParser());
+appSlave2.use(pastry.parseCookies({
+	cookie: config.slave2.cookie
+}));
+appSlave2.use(appSlave2.router);
+
+appSlave2.get('/session', function(req,res){
+	res.send(200, req.pastry);
+});
+
+appSlave2.get('/ps/req/:crypted',function(req,res){
+	req.pastry[config.slave2.cookie[0].name].sharingRequest();
+});
+
+appSlave2.listen(config.slave2.port);
+console.log('App slave listening on port',config.slave2.port);
