@@ -66,7 +66,7 @@ appHost.get('/login', function(req,res){
 });
 
 appHost.listen(config.host.port);
-console.log('App host listening on port',config.host.port);
+console.log('Host listening on port',config.host.port);
 
 // -----------
 // APP SLAVE 1
@@ -88,7 +88,7 @@ appSlave1.get('/ps/req/:crypted',function(req,res){
 });
 
 appSlave1.listen(config.slave1.port);
-console.log('App slave listening on port',config.slave1.port);
+console.log('Slave1 listening on port',config.slave1.port);
 
 // -----------
 // APP SLAVE 2
@@ -110,4 +110,4 @@ appSlave2.get('/ps/req/:crypted',function(req,res){
 });
 
 appSlave2.listen(config.slave2.port);
-console.log('App slave listening on port',config.slave2.port);
+console.log('Slave2 listening on port',config.slave2.port);
