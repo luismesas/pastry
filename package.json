@@ -6,13 +6,12 @@
 	"author"		: "Luis Mesas <luismesas@gmail.com>",
 	"repository"	: {"type": "git", "url": "git://github.com/luismesas/pastry.git"},
 	"main"			: "index.js",
-	"version"		: "0.9.9",
+	"version"		: "0.9.10",
 
   	"dependencies"	: {
-		"node-uuid"	: "1.4.x",
 		"pause"		: "0.0.1",
 		"mongodb"	: "1.2.x",
 		"redis"		: "0.8.2",
-		"hero"		: "https://github.com/thegameofcode/hero/tarball/master"
+		"hero"		: "https://github.com/thegameofcode/hero/archive/0.1.9.tar.gz"
 	}
 }
