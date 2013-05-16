@@ -102,6 +102,7 @@ appSlave2.use(pastry.parseCookies({
 appSlave2.use(appSlave2.router);
 
 appSlave2.get('/session', function(req,res){
+	req.pastry[config.slave2.cookie[0].name].invalidate();
 	res.send(200, req.pastry);
 });
 
