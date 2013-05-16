@@ -1,3 +1,10 @@
+0.9.10 / 2013-05-16
+===================
+
+  * new: longer session tokens
+  * new: session data can be spread among multiple pastry on different applications
+  * fix: session invalidation was not compatible with multiple cookies
+
 0.9.9 / 2013-05-13
 ==================
 
